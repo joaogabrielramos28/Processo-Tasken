@@ -8,7 +8,7 @@ export const defaultTheme = {
   text_dark: "#000",
   title: "#444",
   white: "#FFFF",
-  white_light: "rgba(255,255,255,.4)",
+  white_light: "hsla(0, 0%, 100%, 0.2)",
   fire: {
     background: "#f24333",
     text: "#FFFF",
