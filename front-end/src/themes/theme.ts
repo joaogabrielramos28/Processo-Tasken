@@ -6,6 +6,7 @@ export const fireTheme = {};
 export const defaultTheme = {
   background: "#969CB2",
   text_dark: "#000",
+  title: "#444",
   white: "#FFFF",
   white_light: "rgba(255,255,255,.4)",
   fire: {

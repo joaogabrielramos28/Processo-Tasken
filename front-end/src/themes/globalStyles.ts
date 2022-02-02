@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-
+import BgImage from "../assets/background.jpg";
 export default createGlobalStyle`
 
     * {
@@ -9,7 +9,7 @@ export default createGlobalStyle`
 
 
     body{
-        background-color:${(props) => props.theme.background}
+        background-image:url(${BgImage})
     }
 
 `;

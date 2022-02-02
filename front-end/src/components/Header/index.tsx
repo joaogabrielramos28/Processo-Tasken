@@ -1,10 +1,14 @@
 import React from "react";
-import { Container } from "./styles";
-
+import { Container, Logo, Title } from "./styles";
+import PokeBall from "../../assets/pokeball.svg";
 const Header = () => {
   return (
     <Container>
-      <h2>Ola</h2>
+      <Title>
+        P
+        <Logo src={PokeBall} />
+        kédex
+      </Title>
     </Container>
   );
 };
