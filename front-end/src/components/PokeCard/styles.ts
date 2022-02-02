@@ -13,6 +13,8 @@ export const Container = styled.div`
   border-radius: 3rem;
 
   padding: 3rem 1rem 3rem 3rem;
+
+  cursor: pointer;
 `;
 
 export const PokeInfo = styled.div`
