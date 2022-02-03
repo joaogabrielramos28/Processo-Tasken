@@ -150,34 +150,4 @@ export const Move = styled.h3`
   color: ${({ theme }) => theme.title};
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   text-align: center;
-  &:hover {
-    opacity: 0.4;
-    transition: 0.7s ease;
-    cursor: pointer;
-  }
-`;
-
-export const Button = styled.button`
-  margin-top: 20px;
-  background-color: ${({ theme }) => theme.fire.background};
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: ${({ theme }) => theme.white};
-
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  width: 350px;
-  cursor: pointer;
-
-  &:hover {
-    opacity: 0.4;
-    transition: 0.7s ease;
-  }
-`;
-
-export const ButtonLoad = styled(Button)`
-  padding: 4px;
-  width: 250px;
 `;

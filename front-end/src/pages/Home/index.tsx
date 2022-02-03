@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Header from "../../components/Header";
-import { Container, Search, Button, ButtonContainer } from "./styles";
+import { Container, Search, ButtonContainer } from "./styles";
 import { GET_POKEMONS } from "../../services/apollo-client";
 import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 import PokeCard from "../../components/PokeCard";
 import Spinner from "../../components/Spinner";
+import Button from "../../components/Button";
 interface ResultsProps {
   url: string;
   name: string;
@@ -66,7 +67,11 @@ const Home = () => {
       </Container>
       {pokemonsVisible < numberOfPokemons && (
         <ButtonContainer>
-          <Button onClick={handleLoadMorePokemons}>Load More</Button>
+          <Button
+            size={"450px"}
+            onClick={handleLoadMorePokemons}
+            title={"Load More"}
+          />
         </ButtonContainer>
       )}
     </>

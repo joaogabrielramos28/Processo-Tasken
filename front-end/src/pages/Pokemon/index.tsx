@@ -15,8 +15,6 @@ import {
   Moves,
   Title,
   Move,
-  ButtonLoad,
-  Button,
 } from "./styles";
 
 import { Link, useParams } from "react-router-dom";
@@ -24,6 +22,7 @@ import { useQuery } from "@apollo/client";
 import { GET_POKEMON } from "../../services/apollo-client";
 import PokeballImage from "../../assets/pokeball.png";
 import Spinner from "../../components/Spinner";
+import Button from "../../components/Button";
 
 interface PokemonDataProps {
   pokemon: {
@@ -90,10 +89,14 @@ const Pokemon = () => {
               return <Move key={moves.move.name}>{moves.move.name}</Move>;
             })}
             {loadMoves < movesLength && (
-              <ButtonLoad onClick={handleAddMoreMoves}>Load more</ButtonLoad>
+              <Button
+                size={"250px"}
+                onClick={handleAddMoreMoves}
+                title={"Load More"}
+              />
             )}
           </Moves>
-          <Button>Catch</Button>
+          <Button size={"350px"} title={"Catch"} onClick={() => {}} />
         </CardInfo>
       </Card>
     </Container>
