@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+
 import {
   Container,
   Card,
   PokemonImage,
   CardInfo,
+  CardHeader,
   PokemonName,
+  Icon,
+  Space,
   PokemonTypes,
   PokemonType,
   Pokeball,
@@ -14,7 +18,7 @@ import {
   ButtonLoad,
   Button,
 } from "./styles";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_POKEMON } from "../../services/apollo-client";
 import PokeballImage from "../../assets/pokeball.png";
@@ -41,7 +45,7 @@ interface PokemonDataProps {
 }
 
 const Pokemon = () => {
-  const [loadMoves, setLoadMoves] = useState(5);
+  const [loadMoves, setLoadMoves] = useState(10);
   const [showButton, setshowButton] = useState(true);
   const { name } = useParams();
 
@@ -65,7 +69,13 @@ const Pokemon = () => {
   return (
     <Container>
       <Card type={data.pokemon.types[0].type.name}>
-        <PokemonName>{data.pokemon.name}</PokemonName>
+        <CardHeader>
+          <Link to="/">
+            <Icon />
+          </Link>
+          <PokemonName>{data.pokemon.name}</PokemonName>
+          <Space></Space>
+        </CardHeader>
         <PokemonTypes>
           {data.pokemon.types.map((types) => (
             <PokemonType>{types.type.name}</PokemonType>

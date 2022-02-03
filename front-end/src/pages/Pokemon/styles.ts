@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-
+import { AiOutlineArrowLeft } from "react-icons/ai";
 interface CardProps {
   type: string;
 }
@@ -42,11 +42,25 @@ export const Card = styled.div<CardProps>`
 
   border-radius: 8px;
 `;
+
+export const CardHeader = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+export const Icon = styled(AiOutlineArrowLeft)`
+  cursor: pointer;
+  font-size: 1.5rem;
+
+  color: ${({ theme }) => theme.white};
+`;
 export const PokemonName = styled.h2`
   margin-top: 12px;
   font-size: 2rem;
   color: ${({ theme }) => theme.white};
 `;
+export const Space = styled.div``;
 
 export const PokemonTypes = styled.div`
   padding: 12px 32px;
@@ -57,12 +71,19 @@ export const PokemonTypes = styled.div`
 `;
 
 export const PokemonType = styled.h3`
+  cursor: pointer;
   padding: 2px 12px;
   margin: 0 10px;
   color: ${({ theme }) => theme.title};
   border-radius: 100rem;
   background-color: ${({ theme }) => theme.white_light};
   color: ${({ theme }) => theme.white};
+
+  &:hover {
+    opacity: 0.3;
+
+    transition: 0.7s ease;
+  }
 `;
 
 export const PokemonImage = styled.img`
@@ -94,9 +115,12 @@ export const Pokeball = styled.img`
   top: -30px;
   transition: 0.7s;
 
+  padding: 0px;
+
   &:hover {
     transform: rotate(360deg);
     transition: 0.8s;
+    padding: 12px;
   }
 `;
 
@@ -114,6 +138,9 @@ export const Moves = styled.div`
 export const Title = styled.h3`
   text-align: center;
   color: ${({ theme }) => theme.title};
+  font-size: 1.3rem;
+
+  margin-bottom: 10px;
 `;
 
 export const Move = styled.h3`
@@ -121,7 +148,7 @@ export const Move = styled.h3`
   width: 100%;
   color: ${({ theme }) => theme.title};
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-
+  text-align: center;
   &:hover {
     opacity: 0.4;
     transition: 0.7s ease;
