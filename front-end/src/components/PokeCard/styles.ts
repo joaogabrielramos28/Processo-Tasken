@@ -1,18 +1,19 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 450px;
+  width: 300px;
   display: flex;
 
   padding: 1rem;
+  flex-direction: column;
 
-  box-shadow: 0 0 20px 0 #4bd0b1;
-
-  background-color: #4bd0b1;
+  background-color: ${({ theme }) => theme.white};
 
   border-radius: 3rem;
+  justify-content: center;
 
-  padding: 3rem 1rem 3rem 3rem;
+  align-items: center;
+  padding: 3rem;
 
   cursor: pointer;
 `;
@@ -25,31 +26,14 @@ export const PokeInfo = styled.div`
 `;
 
 export const PokeName = styled.h2`
-  color: ${({ theme }) => theme.white};
+  color: ${({ theme }) => theme.title};
   font-weight: bold;
   font-size: 2rem;
 
   text-transform: capitalize;
 `;
 
-export const PokeTypes = styled.div`
-  margin-top: 1rem;
-`;
-
-export const PokeType = styled.h3`
-  color: ${({ theme }) => theme.white};
-  font-weight: 200;
-  font-size: 1rem;
-
-  border-radius: 100rem;
-  text-align: center;
-  background-color: ${({ theme }) => theme.white_light};
-
-  padding: 0.3rem 0.7rem;
-
-  margin-top: 0.3rem;
-`;
-
 export const PokeImage = styled.img`
-  width: 180px;
+  width: 250px;
+  object-fit: cover;
 `;

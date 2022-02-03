@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache, gql, useQuery } from "@apollo/client";
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 export const client = new ApolloClient({
   uri: "https://graphql-pokeapi.graphcdn.app/",
@@ -22,19 +22,24 @@ export const GET_POKEMONS = gql`
   }
 `;
 
-const gqlVariables = {
-  limit: 10,
-  offset: 1,
-};
-
-export const Todos = () => {
-  const { loading, error, data } = useQuery(GET_POKEMONS, {
-    variables: gqlVariables,
-  });
-
-  if (loading) return "Loading...";
-  if (error) return `Error! ${error.message}`;
-
-  console.log("Response from server", data);
-  return data;
-};
+export const GET_POKEMON = gql`
+  query pokemon($name: String!) {
+    pokemon(name: $name) {
+      id
+      name
+      sprites {
+        front_default
+      }
+      moves {
+        move {
+          name
+        }
+      }
+      types {
+        type {
+          name
+        }
+      }
+    }
+  }
+`;

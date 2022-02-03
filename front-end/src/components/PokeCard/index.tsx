@@ -1,25 +1,18 @@
 import React from "react";
-import {
-  Container,
-  PokeInfo,
-  PokeImage,
-  PokeName,
-  PokeTypes,
-  PokeType,
-} from "./styles";
+import { Container, PokeInfo, PokeImage, PokeName } from "./styles";
 
-const PokeCard = () => {
+interface PokemonProps {
+  name: string;
+  image: string;
+}
+
+const PokeCard = ({ name, image }: PokemonProps) => {
   return (
     <Container>
+      <PokeImage src={image} />
       <PokeInfo>
-        <PokeName>Bulbasaur</PokeName>
-
-        <PokeTypes>
-          <PokeType>Grass</PokeType>
-          <PokeType>Grass</PokeType>
-        </PokeTypes>
+        <PokeName>{name}</PokeName>
       </PokeInfo>
-      <PokeImage src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" />
     </Container>
   );
 };

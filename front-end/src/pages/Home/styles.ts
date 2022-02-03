@@ -5,7 +5,25 @@ export const Container = styled.div`
   padding: 12px 32px;
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(430px, auto));
+  grid-template-columns: repeat(auto-fit, minmax(350px, auto));
   justify-content: center;
   gap: 20px;
+`;
+
+export const Search = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  input {
+    padding: 8px 12px;
+    border: 2px solid ${({ theme }) => theme.fire.background};
+    color: ${({ theme }) => theme.text_dark};
+    border-radius: 8px;
+
+    outline: none;
+
+    background-color: ${({ theme }) => theme.white};
+  }
 `;
