@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Header from "../../components/Header";
-import PokeCard from "../../components/PokeCard";
-import { Container, Search } from "./styles";
+import { Container, Search, Button, LoadContainer } from "./styles";
 import { GET_POKEMONS, GET_POKEMON } from "../../services/apollo-client";
 import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
+import PokeCard from "../../components/PokeCard";
 
 interface ResultsProps {
   url: string;
@@ -19,15 +19,19 @@ interface DataProps {
 
 const Home = () => {
   const [searchPoke, setSearchPoke] = useState("");
+  const [pokemonsVisible, setPokemonsVisible] = useState(10);
   const { data } = useQuery<DataProps>(GET_POKEMONS, {
     variables: {
-      limit: 10,
+      limit: 151,
       offset: 0,
     },
   });
 
-  console.log(data);
+  function handleLoadMorePokemons() {
+    setPokemonsVisible(pokemonsVisible + 10);
+  }
 
+  const numberOfPokemons = data?.pokemons.results.length || 0;
   return (
     <>
       <Header />
@@ -44,6 +48,8 @@ const Home = () => {
               return "";
             }
           })
+          .slice(0, pokemonsVisible)
+
           .map((pokemon) => (
             <Link to={`/pokemon/${pokemon.name}`}>
               <PokeCard
@@ -54,6 +60,11 @@ const Home = () => {
             </Link>
           ))}
       </Container>
+      {pokemonsVisible < numberOfPokemons && (
+        <LoadContainer>
+          <Button onClick={handleLoadMorePokemons}>Load More</Button>
+        </LoadContainer>
+      )}
     </>
   );
 };

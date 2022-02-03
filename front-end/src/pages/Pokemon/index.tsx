@@ -46,7 +46,6 @@ interface PokemonDataProps {
 
 const Pokemon = () => {
   const [loadMoves, setLoadMoves] = useState(10);
-  const [showButton, setshowButton] = useState(true);
   const { name } = useParams();
 
   const { data } = useQuery<PokemonDataProps>(GET_POKEMON, {
@@ -60,11 +59,9 @@ const Pokemon = () => {
   }
 
   function handleAddMoreMoves() {
-    const movesLength = data?.pokemon.moves.length || 0;
-    if (loadMoves >= movesLength) {
-      setshowButton(false);
-    } else setLoadMoves(loadMoves + 5);
+    setLoadMoves(loadMoves + 5);
   }
+  const movesLength = data?.pokemon.moves.length || 0;
 
   return (
     <Container>
@@ -90,7 +87,7 @@ const Pokemon = () => {
             {data.pokemon.moves.slice(0, loadMoves).map((moves) => {
               return <Move key={moves.move.name}>{moves.move.name}</Move>;
             })}
-            {showButton && (
+            {loadMoves < movesLength && (
               <ButtonLoad onClick={handleAddMoreMoves}>Load more</ButtonLoad>
             )}
           </Moves>

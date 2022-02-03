@@ -27,3 +27,22 @@ export const Search = styled.div`
     background-color: ${({ theme }) => theme.white};
   }
 `;
+export const LoadContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+`;
+
+export const Button = styled.button`
+  margin: 20px 0;
+  width: 700px;
+  padding: 12px 8px;
+  background-color: ${({ theme }) => theme.fire.background};
+  color: ${({ theme }) => theme.white};
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+`;
