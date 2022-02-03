@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 
 interface CardProps {
   type: string;
@@ -101,10 +101,14 @@ export const Pokeball = styled.img`
 `;
 
 export const Moves = styled.div`
+  margin-top: 20px;
   padding: 30px 0;
   width: 100%;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  height: 350px;
+  align-items: center;
 `;
 
 export const Title = styled.h3`
@@ -126,6 +130,7 @@ export const Move = styled.h3`
 `;
 
 export const Button = styled.button`
+  margin-top: 20px;
   background-color: ${({ theme }) => theme.fire.background};
   font-size: 0.9rem;
   font-weight: 700;
@@ -142,4 +147,9 @@ export const Button = styled.button`
     opacity: 0.4;
     transition: 0.7s ease;
   }
+`;
+
+export const ButtonLoad = styled(Button)`
+  padding: 4px;
+  width: 250px;
 `;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Card,
@@ -11,6 +11,7 @@ import {
   Moves,
   Title,
   Move,
+  ButtonLoad,
   Button,
 } from "./styles";
 import { useParams } from "react-router-dom";
@@ -40,6 +41,8 @@ interface PokemonDataProps {
 }
 
 const Pokemon = () => {
+  const [loadMoves, setLoadMoves] = useState(5);
+  const [showButton, setshowButton] = useState(true);
   const { name } = useParams();
 
   const { data } = useQuery<PokemonDataProps>(GET_POKEMON, {
@@ -52,7 +55,12 @@ const Pokemon = () => {
     return <h2>carregando...</h2>;
   }
 
-  console.log(data);
+  function handleAddMoreMoves() {
+    const movesLength = data?.pokemon.moves.length || 0;
+    if (loadMoves >= movesLength) {
+      setshowButton(false);
+    } else setLoadMoves(loadMoves + 5);
+  }
 
   return (
     <Container>
@@ -69,12 +77,12 @@ const Pokemon = () => {
           <Pokeball src={PokeballImage} />
           <Moves>
             <Title>Moves</Title>
-            {data.pokemon.moves.map((moves, i) => {
-              if (i < 8) {
-                return <Move>{moves.move.name}</Move>;
-              }
-              return "";
+            {data.pokemon.moves.slice(0, loadMoves).map((moves) => {
+              return <Move key={moves.move.name}>{moves.move.name}</Move>;
             })}
+            {showButton && (
+              <ButtonLoad onClick={handleAddMoreMoves}>Load more</ButtonLoad>
+            )}
           </Moves>
           <Button>Catch</Button>
         </CardInfo>
