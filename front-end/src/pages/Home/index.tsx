@@ -4,6 +4,7 @@ import PokeCard from "../../components/PokeCard";
 import { Container, Search } from "./styles";
 import { GET_POKEMONS, GET_POKEMON } from "../../services/apollo-client";
 import { useQuery } from "@apollo/client";
+import { Link } from "react-router-dom";
 
 interface ResultsProps {
   url: string;
@@ -44,11 +45,13 @@ const Home = () => {
             }
           })
           .map((pokemon) => (
-            <PokeCard
-              key={pokemon.url}
-              name={pokemon.name}
-              image={pokemon.image}
-            />
+            <Link to={`/pokemon/${pokemon.name}`}>
+              <PokeCard
+                key={pokemon.url}
+                name={pokemon.name}
+                image={pokemon.image}
+              />
+            </Link>
           ))}
       </Container>
     </>

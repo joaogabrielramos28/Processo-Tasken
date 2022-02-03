@@ -21,4 +21,8 @@ export const defaultTheme = {
     background: "#1e96f0",
     text: "#FFFF",
   },
+
+  bug: {
+    background: "#a8b820",
+  },
 };
