@@ -18,10 +18,12 @@ import {
   ButtonLoad,
   Button,
 } from "./styles";
+
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_POKEMON } from "../../services/apollo-client";
 import PokeballImage from "../../assets/pokeball.png";
+import Spinner from "../../components/Spinner";
 
 interface PokemonDataProps {
   pokemon: {
@@ -55,7 +57,7 @@ const Pokemon = () => {
   });
 
   if (!data) {
-    return <h2>carregando...</h2>;
+    return <Spinner />;
   }
 
   function handleAddMoreMoves() {

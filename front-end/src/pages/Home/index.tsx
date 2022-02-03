@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Header from "../../components/Header";
-import { Container, Search, Button, LoadContainer } from "./styles";
-import { GET_POKEMONS, GET_POKEMON } from "../../services/apollo-client";
+import { Container, Search, Button, ButtonContainer } from "./styles";
+import { GET_POKEMONS } from "../../services/apollo-client";
 import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 import PokeCard from "../../components/PokeCard";
-
+import Spinner from "../../components/Spinner";
 interface ResultsProps {
   url: string;
   name: string;
@@ -29,6 +29,10 @@ const Home = () => {
 
   function handleLoadMorePokemons() {
     setPokemonsVisible(pokemonsVisible + 10);
+  }
+
+  if (!data) {
+    return <Spinner />;
   }
 
   const numberOfPokemons = data?.pokemons.results.length || 0;
@@ -61,9 +65,9 @@ const Home = () => {
           ))}
       </Container>
       {pokemonsVisible < numberOfPokemons && (
-        <LoadContainer>
+        <ButtonContainer>
           <Button onClick={handleLoadMorePokemons}>Load More</Button>
-        </LoadContainer>
+        </ButtonContainer>
       )}
     </>
   );

@@ -18,7 +18,7 @@ export const Card = styled.div<CardProps>`
   align-items: center;
   width: 450px;
   height: 700px;
-  background-color: ${({ theme }) => theme.white};
+  background-color: #6244e8;
   ${({ theme, type }) =>
     type === "grass" &&
     css`
@@ -58,6 +58,7 @@ export const Icon = styled(AiOutlineArrowLeft)`
 export const PokemonName = styled.h2`
   margin-top: 12px;
   font-size: 2rem;
+  transform: translateX(-10px);
   color: ${({ theme }) => theme.white};
 `;
 export const Space = styled.div``;
